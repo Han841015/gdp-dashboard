@@ -2,12 +2,12 @@
 <html lang="zh-TW">
 <head>
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-M8WSS5GK');</script>
-<!-- End Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-M8WSS5GK');</script>
+    <!-- End Google Tag Manager -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>電商網站</title>
@@ -22,6 +22,14 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             background: #333;
             color: white;
             padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .cart-icon {
+            font-size: 20px;
+            cursor: pointer;
+            margin-right: 20px;
         }
         .container {
             max-width: 1000px;
@@ -63,11 +71,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M8WSS5GK"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M8WSS5GK"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <header>
         <h1>簡單電商網站</h1>
+        <a href="cart.html" class="cart-icon">🛒 購物車</a>
     </header>
     <div class="container">
         <div class="product">
@@ -76,7 +85,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p>價格: $200</p>
             <div class="buttons">
                 <button onclick="addToCart('商品 1', 200)">加入購物車</button>
-                <button class="buy-now" onclick="buyNow('商品 1', 200)">立即購買</button>
+                <a href="product1.html" class="buy-now">查看詳情</a>
             </div>
         </div>
         <div class="product">
@@ -85,7 +94,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p>價格: $250</p>
             <div class="buttons">
                 <button onclick="addToCart('商品 2', 250)">加入購物車</button>
-                <button class="buy-now" onclick="buyNow('商品 2', 250)">立即購買</button>
+                <a href="product2.html" class="buy-now">查看詳情</a>
             </div>
         </div>
         <div class="product">
@@ -94,16 +103,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <p>價格: $220</p>
             <div class="buttons">
                 <button onclick="addToCart('商品 3', 220)">加入購物車</button>
-                <button class="buy-now" onclick="buyNow('商品 3', 220)">立即購買</button>
+                <a href="product3.html" class="buy-now">查看詳情</a>
             </div>
         </div>
     </div>
     <script>
         function addToCart(product, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ product, price });
+            localStorage.setItem("cart", JSON.stringify(cart));
             alert(product + " 已加入購物車，價格: $" + price);
-        }
-        function buyNow(product, price) {
-            alert("購買 " + product + "，價格: $" + price);
         }
     </script>
 </body>
