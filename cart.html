@@ -1,0 +1,33 @@
+<!-- cart.html -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>購物車</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        .container { max-width: 600px; margin: auto; }
+    </style>
+</head>
+<body>
+    <header><h1>購物車</h1><a href="index.html">返回首頁</a></header>
+    <div class="container">
+        <ul id="cart-list"></ul>
+        <p id="total-price"></p>
+    </div>
+    <script>
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let cartList = document.getElementById("cart-list");
+        let totalPrice = document.getElementById("total-price");
+        let sum = 0;
+        cart.forEach(item => {
+            let li = document.createElement("li");
+            li.textContent = `${item.product} - $${item.price}`;
+            cartList.appendChild(li);
+            sum += item.price;
+        });
+        totalPrice.textContent = `總價: $${sum}`;
+    </script>
+</body>
+</html>
