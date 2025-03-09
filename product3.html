@@ -1,0 +1,27 @@
+<!-- product3.html -->
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品 3 詳情</title>
+</head>
+<body>
+    <header><h1>商品 3</h1><a href="index.html">返回首頁</a></header>
+    <img src="https://github.com/Han841015/gdp-dashboard/blob/main/22202.jpg?raw=true" alt="商品3">
+    <p>價格: $220</p>
+    <button onclick="addToCart('商品 3', 220)">加入購物車</button>
+    <button onclick="buyNow('商品 3', 220)">立即購買</button>
+    <script>
+        function addToCart(product, price) {
+            let cart = JSON.parse(localStorage.getItem("cart")) || [];
+            cart.push({ product, price });
+            localStorage.setItem("cart", JSON.stringify(cart));
+            alert(product + " 已加入購物車！");
+        }
+        function buyNow(product, price) {
+            alert("購買 " + product + "，價格: $" + price);
+        }
+    </script>
+</body>
+</html>
